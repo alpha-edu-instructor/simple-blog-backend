@@ -5,7 +5,7 @@ import { hashPassword, checkValidPassword } from "../services/bcrypt.js";
 class AuthController {
   async register(req, res) {
     try {
-      const { firstName, lastName, email, password } = req.body;
+      const { firstName, lastName, email, password, isManager } = req.body;
 
       const emailAlreadyExists = await User.findOne({ email });
       if (emailAlreadyExists) {
@@ -20,7 +20,8 @@ class AuthController {
         firstName,
         lastName,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        isManager
       }).save();
       res.status(201).json({ user: newUser });
     } catch (error) {

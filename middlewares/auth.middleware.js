@@ -17,3 +17,11 @@ export function authUser(req, res, next) {
     res.status(401).json({ message: "Невалидный токен" });
   }
 }
+
+export function checkIsManager(req, res, next) {
+  if (req.isManager) {
+    next();
+  } else {
+    return res.status(403).json({ message: "Нет доступа" });
+  }
+}

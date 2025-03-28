@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   isManager: {
-    type: Boolean, 
+    type: Boolean,
     required: true,
     default: false
   }
